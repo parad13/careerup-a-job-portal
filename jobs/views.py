@@ -1,30 +1,17 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.contrib.auth.models import User
-from django.views.generic import (ListView,DetailView,CreateView,UpdateView,DeleteView)
-from .models import job,employee
-
-#Function Based Views
-
-def about(request):
-    return render(request, 'jobs/about.html', {'title': 'About'})
+from django.views.generic import (ListView,DetailView,UpdateView,DeleteView)
+from .models import Postjobs, job,employee
 
 def home(request):
-    context = {
-        'jobs': job.objects.all()
+    context1 = {
+        'jobs': Postjobs.objects.all()
     }
-    return render(request, 'jobs/home.html', context)
+    return render(request, 'home.html', context1)
 
-
-# def emp(request):
-#     context = {
-#         'emps': employee.objects.all()
-#     }
-#     return render(request, 'jobs/all_emp.html', context)
-
-class JobListView(ListView):
+class HomeView(ListView):
     model = job
-    template_name = 'jobs/home.html'  # <app>/<model>_<viewtype>.html
+    template_name = 'home.html'  # <app>/<model>_<viewtype>.html
     context_object_name = 'jobs'
     #ordering = ['-i_date']
 
@@ -32,42 +19,38 @@ class JobDetailView(DetailView):
     model = job
 
 
-class JobUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class JobUpdateView(LoginRequiredMixin, UpdateView):
     model = job
     fields = ['j_name', 'j_type','j_desc']
 
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
+    # def form_valid(self, form):
+    #     form.instance.author = self.request.user
+    #     return super().form_valid(form)
 
-    def test_func(self):
-        post = self.get_object()
-        if self.request.user == post.author:
-            return True
-        return False
+    # def test_func(self):
+    #     post = self.get_object()
+    #     if self.request.user == post.author:
+    #         return True
+    #     return False
 
 
-class JobDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class JobDeleteView(LoginRequiredMixin, DeleteView):
     model = job
     success_url = '/'
 
-    def test_func(self):
-        post = self.get_object()
-        if self.request.user == post.author:
-            return True
-        return False
+    # def test_func(self):
+    #     post = self.get_object()
+    #     if self.request.user == post.author:
+    #         return True
+    #     return False
 
 
-posts = [
-    {
-        'j_emp_id': 'Paras',
-        'j_name': 'Python Dev',
-        'j_type': 'Temporary',
-        'j_desc': 'Lorem ipsum'
-    },
-    {'j_emp_id': 'Shreya',
-        'j_name': 'Java Dev',
-        'j_type': 'Temporary',
-        'j_desc': 'Lorem ipsum'
-     }
-]
+class JobPostListView(ListView):
+    model = job
+    template_name = 'jobs/user_jobs.html'  # <app>/<model>_<viewtype>.html
+    context_object_name = 'jobs'
+    #paginate_by = 5
+
+    # def get_queryset(self):
+    #     user = get_object_or_404(User, username=self.kwargs.get('username'))
+    #     return Post.objects.filter(author=user).order_by('-date_posted')

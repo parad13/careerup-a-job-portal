@@ -39,8 +39,8 @@ class AssignJobForm(ModelForm):
 class JobForm(ModelForm):
 
     class Meta:
-        model = Joblist
-        fields = ['title', 'type', 'desc','image' ]
+        model = Postjobs
+        fields = ['title', 'type', 'desc', 'image']
 
 class InterviewForm(ModelForm):
 

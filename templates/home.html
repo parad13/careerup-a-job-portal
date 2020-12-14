@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="job-form-section job-form-section--image">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="job-form-box">
+                    <h2 class="heading">Find a <span class="accent">job</span> you will
+                        <span class="accent">love</span>.
+                    </h2>
+                    <form id="job-main-form" method="get" action="{% url 'jobs:search' %}" class="job-main-form">
+                        <div class="controls">
+                            <div class="row align-items-center">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label for="profession">Abc</label>
+                                        <input type="text" id="profession" name="position"
+                                            placeholder="Position you are looking for" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label for="location">Location</label>
+                                        <input type="text" id="location" name="location"
+                                            placeholder="Any particular location?" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="submit" class="btn btn-outline-white-primary job-main-form__button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% for job in jobs %}
+<article class="media content-section">
+    <div class="media">
+        <img class="rounded-circle account-img" src="{{ job.image.url }}">
+        <div class="media-body">
+            <a class="account-heading" href="{% url 'jobs:job-detail' job.id  %}">{{ job.title }}</a>
+            <p class="text-secondary">{{ job.type }}</p>
+            <p class="text-secondary">{{ job.desc}}</p>
+            <small class="text-muted">{{ job.date|date:"F d, Y" }}</small>
+        </div>
+    </div>
+</article>
+{% endfor %}
+{% endblock content %}
+

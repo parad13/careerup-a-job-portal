@@ -72,19 +72,18 @@ class call_letter(models.Model):
     USERNAME_FIELD = 'cl_emp_id'
 
 
-class Joblist(models.Model):
+class Postjobs(models.Model):
     image = models.ImageField(default='default1.jpg', upload_to='profile_pics')
-    title = models.CharField(max_length=100)
-    type = models.CharField(max_length=100)  # wfh/part
+    title = models.CharField(max_length=45)
+    type = models.CharField(max_length=45)  # wfh/part
     date = models.DateTimeField(default=timezone.now)
     desc = models.TextField()
     
-
     def __str__(self):
-        return f'{self.user.username} Joblist'
+        return f'{self.user.username} Postjobs'
 
     def save(self, *args, **kwargs):
-        super(Joblist, self).save(*args, **kwargs)
+        super(Postjobs, self).save(*args, **kwargs)
 
         img = Image.open(self.image.path)
 

@@ -1,18 +1,20 @@
 from django.urls import path
-from .views import (JobDetailView,JobListView, JobUpdateView, JobDeleteView)
-from . import views
+#from .views import (JobDetailView, JobUpdateView, JobDeleteView, JobPostListView)
+from user.views import profile
+from .views import *
 
+app_name = "jobs"
 urlpatterns = [
-
-    path('', JobListView.as_view(), name='jobs-home'),
-    path('about/', views.about, name='jobs-about'),
-    path('job/<int:pk>', JobDetailView.as_view(), name='job-detail'),
-    # path('job/allemp', views.emp, name='emp')
     
-    #yet to active
-    
-    # path('job/<int:pk>/update/', JobUpdateView.as_view(), name='job-update'),
-    # path('job/<int:pk>/delete/', JobDeleteView.as_view(), name='job-delete'),
-    #path('job/<str:username>', JobPostListView.as_view(), name='job-posts')
+    path("", HomeView.as_view(), name="home"),
+    # path("favorite/", favorite, name="favorite"),
+    # path("search/", SearchView.as_view(), name="search"),
+    path('job/<int:pk>', JobDetailView.as_view(), name='detail'),
+    path('job/<int:pk>/update/', JobUpdateView.as_view(), name='update'),
+    path('job/<int:pk>/delete/', JobDeleteView.as_view(), name='delete'),
+    # path('job/<str:j_emp_id>', JobPostListView.as_view(), name='job-posts'),
+    path('search/', profile, name='search'),
     
 ]
+
+#user_posts --> employee profile
