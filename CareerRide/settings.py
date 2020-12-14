@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import django_heroku
 
 # SOCIAL_AUTH_STORAGE = 'social_django_mongoengine.models.DjangoStorage'
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
@@ -154,4 +155,4 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('paraswaral@gmail.com')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
-#xfaiiouwttwhzvdv
+django_heroku.settings(locals())
