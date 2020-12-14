@@ -28,7 +28,7 @@
                                 </div>
                                 <div class="col-md-2">
                                     <button type="submit" class="btn btn-outline-white-primary job-main-form__button">
-                                        <i class="fa fa-search"></i>
+                                        <i class="fa fa-search"><b>Search</b></i>
                                     </button>
                                 </div>
                             </div>
@@ -46,7 +46,7 @@
     <div class="media">
         <img class="rounded-circle account-img" src="{{ job.image.url }}">
         <div class="media-body">
-            <a class="account-heading" href="{% url 'jobs:job-detail' job.id  %}">{{ job.title }}</a>
+            <a class="account-heading" href="{% url 'jobs:detail' job.id  %}">{{ job.title }}</a>
             <p class="text-secondary">{{ job.type }}</p>
             <p class="text-secondary">{{ job.desc}}</p>
             <small class="text-muted">{{ job.date|date:"F d, Y" }}</small>

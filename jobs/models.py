@@ -78,6 +78,8 @@ class Postjobs(models.Model):
     type = models.CharField(max_length=45)  # wfh/part
     date = models.DateTimeField(default=timezone.now)
     desc = models.TextField()
+    p_job_key = models.ForeignKey(
+        job, default=None, on_delete=models.CASCADE)
     
     def __str__(self):
         return f'{self.user.username} Postjobs'

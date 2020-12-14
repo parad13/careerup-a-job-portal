@@ -4,6 +4,7 @@ from user.views import profile
 from .views import *
 
 app_name = "jobs"
+
 urlpatterns = [
     
     path("", JobListView.as_view(), name="home"),
