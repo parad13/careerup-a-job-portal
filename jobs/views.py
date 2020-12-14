@@ -9,7 +9,7 @@ def home(request):
     }
     return render(request, 'home.html', context1)
 
-class HomeView(ListView):
+class JobListView(ListView):
     model = job
     template_name = 'home.html'  # <app>/<model>_<viewtype>.html
     context_object_name = 'jobs'

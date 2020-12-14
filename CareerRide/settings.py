@@ -17,7 +17,7 @@ SECRET_KEY = 'gqam)^m3zh!ej#v4xj!k(8pk1y7p__xv_iwu32$@s2-*^u!wz6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://careerride.herokuapp.com/]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -36,16 +36,6 @@ INSTALLED_APPS = [
     'jobs',
     'employer',
     'crispy_forms',
-    # "social_django",
-    # 'social_django_mongoengine',
-    # "django.contrib.sites",
-    # "django.contrib.flatpages",
-    "django_elasticsearch_dsl",
-    # "drf_yasg",
-    # "corsheaders",
-    # "rest_framework",
-    # "rest_framework.authtoken",
-    # "rest_framework_simplejwt.token_blacklist",
    
 ]
 
@@ -146,7 +136,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
