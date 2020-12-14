@@ -167,11 +167,3 @@ EMAIL_HOST_USER = os.environ.get('paraswaral@gmail.com')
 EMAIL_HOST_PASSWORD = os.environ.get('xfaiiouwttwhzvdv')
 
 
-#Elasticsearch Setup
-ELASTIC_HOST_NAME = os.environ.get("ELASTIC_HOST_NAME", "localhost")
-ELASTIC_HOST_PORT = os.environ.get("ELASTIC_HOST_PORT", "9200")
-ELASTICSEARCH_DSL = {
-    "default": {
-        "hosts": ELASTIC_HOST_NAME + ":" + ELASTIC_HOST_PORT,
-    },
-}
