@@ -22,20 +22,16 @@ ALLOWED_HOSTS = ['https://guarded-reaches-21647.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
-   
+    'jobs.apps.JobsConfig',
+    'user.apps.UserConfig',
+    'employer.apps.EmployerConfig',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    # Manually added
-    'user',
-    'jobs',
-    'employer',
-    'crispy_forms',
-   
 ]
 
 MIDDLEWARE = [
@@ -75,7 +71,7 @@ WSGI_APPLICATION = 'CareerRide.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'CareerUp1',
+        'NAME': 'careerup',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'USER':'root',

@@ -14,6 +14,33 @@ class roles(models.Model):
         return self.r_name
 
 
+class employee(models.Model):
+    emp_name = models.CharField(max_length=100)
+    emp_username = models.CharField(
+        max_length=100)  # Same as name varchar(100)
+    emp_mobile = models.IntegerField()  # same as price int
+    emp_address = models.CharField(max_length=200)
+    emp_email = models.EmailField(max_length=254)
+    emp_password = models.CharField(max_length=50)
+    USERNAME_FIELD = 'emp_username'
+
+    def __str__(self):
+        return self.emp_username
+
+
+class job(models.Model):
+    j_emp_id = models.ForeignKey(
+        employee, default=None, on_delete=models.CASCADE)
+    j_name = models.CharField(max_length=100)
+    j_type = models.CharField(max_length=100)
+    j_desc = models.TextField()
+
+    def __str__(self):
+        return self.j_name
+
+    def get_absolute_url(self):
+        return reverse('job-detail', kwargs={'pk': self.pk})
+
 class permissions(models.Model):
     per_role_id = models.ForeignKey(roles, default=None,on_delete=models.CASCADE)
     per_name = models.CharField(max_length=100)
@@ -22,30 +49,6 @@ class permissions(models.Model):
     def __str__(self):
         return self.per_name
 
-
-class employee(models.Model):
-    emp_name = models.CharField(max_length=100)
-    emp_username = models.CharField(max_length=100)  # Same as name varchar(100)
-    emp_mobile = models.IntegerField()  # same as price int
-    emp_address = models.CharField(max_length=200)
-    emp_email = models.EmailField(max_length=254)
-    emp_password = models.CharField(max_length=50)
-    USERNAME_FIELD = 'emp_username'
-    def __str__(self):
-        return self.emp_username
-
-class job(models.Model):
-    j_emp_id = models.ForeignKey(employee,default=None,on_delete=models.CASCADE)
-    j_name = models.CharField(max_length=100)
-    j_type = models.CharField(max_length=100)
-    j_desc = models.TextField()
-    
-
-    def __str__(self):
-        return self.j_name
-    
-    def get_absolute_url(self):
-        return reverse('job-detail', kwargs={'pk': self.pk})
 
 class interview(models.Model):
     i_job_id = models.ForeignKey(job, default=None, on_delete=models.CASCADE)
