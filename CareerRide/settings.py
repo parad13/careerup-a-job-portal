@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'CareerRide.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'CareerRide',
+        'NAME': 'CareerUp1',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'USER':'root',
