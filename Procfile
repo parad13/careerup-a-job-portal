@@ -1,4 +1,2 @@
-release: 
-    python manage.py migrate 
-    pip freeze > requirements.txt
+release: python manage.py migrate 
 web: gunicorn CareerRide.wsgi --log-file -
