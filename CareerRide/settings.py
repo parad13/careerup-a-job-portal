@@ -10,14 +10,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'gqam)^m3zh!ej#v4xj!k(8pk1y7p__xv_iwu32$@s2-*^u!wz6'
-# SECRET_KEY = os.environ.get('SECRET_KEY')
+# SECRET_KEY = 'gqam)^m3zh!ej#v4xj!k(8pk1y7p__xv_iwu32$@s2-*^u!wz6'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
+# DEBUG = (os.environ.get('DEBUG_VALUE') == True)
+DEBUG = True #for development
+# DEBUG = False # for production
 
 ALLOWED_HOSTS = ['https://guarded-reaches-21647.herokuapp.com']
-
 
 # Application definition
 
@@ -69,15 +71,32 @@ WSGI_APPLICATION = 'CareerRide.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# pass1 = os.environ.get('DATABASE_PASS')
+
 DATABASES = {
+    # #MySQL setup
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'careerup',
+    #     'HOST': '127.0.0.1',
+    #     'PORT': '3306',
+    #     'USER':'root',
+    #     'PASSWORD': '1234'
+    # },
+    #Postgres setup
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'careerup',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'USER':'root',
-        'PASSWORD':'1234'
-    }
+        'USER': 'postgres',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    },
+    # #sqlite3 setup
+    # "default": {
+    #     "ENGINE": "django.db.backends.sqlite3",
+    #     "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+    # },
 }
 
 
