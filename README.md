@@ -7,6 +7,8 @@
     <img alt="github Actions" src="https://github.com/parad13/CareerUp#jobportal/workflows/job-portal/badge.svg"/>
 </p>
 
+Live: [Demo](https://guarded-reaches-21647.herokuapp.com//)
+
 Used Tech Stack
 
 1. Django
