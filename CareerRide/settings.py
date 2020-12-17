@@ -20,7 +20,7 @@ DEBUG = (os.environ.get('DEBUG_VALUE') == True)
 # DEBUG = False # for production
 
 ALLOWED_HOSTS = ['https://guarded-reaches-21647.herokuapp.com']
-# ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -165,4 +165,11 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
 django_heroku.settings(locals()) 
 
+#For extra security layer while deployment
+SECURE_HSTS_SECONDS = 60
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_HSTS_PRELOAD = True
 
